@@ -7,4 +7,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /(bg|shadow|from|to)-*-*/,
+      variants: ['hover'],
+    },
+  ],
 }
