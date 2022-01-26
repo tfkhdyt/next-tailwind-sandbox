@@ -7,25 +7,21 @@ import SelectForm from './SelectForm'
 import RadioForm from './RadioForm'
 import CheckboxForm from './CheckboxForm'
 import Button from './Button'
+import Card from './Card'
 
 const Form = () => {
   const {
-    nama,
     setNama,
-    jumlah,
     setJumlah,
-    kelas,
     setKelas,
-    tujuan,
     setTujuan,
-    bagasi,
     setBagasi,
     asuransi,
     setAsuransi,
     handleSubmit,
   } = useContext(Data)
   return (
-    <div className='bg-gradient-to-br from-slate-50 to-slate-200 rounded-md p-6 shadow-md w-full md:w-5/6 space-y-4'>
+    <Card>
       <Header title='Pemesanan Tiket Maskapai' />
       <form className='space-y-4' onSubmit={handleSubmit}>
         <div className='space-y-4'>
@@ -89,7 +85,7 @@ const Form = () => {
           </Button>
         </div>
       </form>
-    </div>
+    </Card>
   )
 }
 

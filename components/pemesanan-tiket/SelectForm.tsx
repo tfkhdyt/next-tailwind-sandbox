@@ -24,8 +24,9 @@ const SelectForm = ({ id, label, option, ...rest }: ISelectForm) => {
         {...rest}
         className='rounded-sm focus:ring-2 focus:ring-blue-600 outline-none px-2 py-1 h-8 transition duration-300 bg-white appearance-none'
         required
+        defaultValue='default'
       >
-        <option selected disabled>Pilih {id}</option>
+        <option disabled value='default'>Pilih {id}</option>
         {option.map((value, i) => (
           <option key={i} value={value}>{value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase()}</option>
         ))}

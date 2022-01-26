@@ -1,20 +1,11 @@
 import Head from 'next/head'
-import {
-  FormEvent,
-  useState,
-  Dispatch,
-  SetStateAction,
-} from 'react'
+import { FormEvent, useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 import Header from '../../components/pemesanan-tiket/Header'
-import InputForm from '../../components/pemesanan-tiket/InputForm'
 import Layout from '../../components/pemesanan-tiket/Layout'
-import { InputType } from '../../components/pemesanan-tiket/InputForm'
-import SelectForm from '../../components/pemesanan-tiket/SelectForm'
-import RadioForm from '../../components/pemesanan-tiket/RadioForm'
-import CheckboxForm from '../../components/pemesanan-tiket/CheckboxForm'
-import Button from '../../components/pemesanan-tiket/Button'
 import { createContext } from 'react'
+import Form from '../../components/pemesanan-tiket/Form'
+import Output from '../../components/pemesanan-tiket/Output'
 
 interface IAsuransi {
   jiwa?: boolean
@@ -23,19 +14,24 @@ interface IAsuransi {
 }
 
 interface IContext {
-  nama: string | null
   setNama: Dispatch<SetStateAction<string | null>>
-  jumlah: number | null
   setJumlah: Dispatch<SetStateAction<number | null>>
-  kelas: string | null
   setKelas: Dispatch<SetStateAction<string | null>>
-  tujuan: string | null
   setTujuan: Dispatch<SetStateAction<string | null>>
-  bagasi: string | null
   setBagasi: Dispatch<SetStateAction<string | null>>
-  asuransi: IAsuransi | null
   setAsuransi: Dispatch<SetStateAction<IAsuransi | null>>
+  showOutput: boolean
+  data: IData
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void
+}
+
+interface IData {
+  nama: string | null
+  jumlah: number | null
+  kelas: string | null
+  tujuan: string | null
+  bagasi: string | null
+  asuransi: IAsuransi | null
 }
 
 export const Data = createContext({} as IContext)
@@ -47,8 +43,10 @@ const PemesananTiket = () => {
   const [tujuan, setTujuan] = useState<string | null>(null)
   const [bagasi, setBagasi] = useState<string | null>(null)
   const [asuransi, setAsuransi] = useState<IAsuransi | null>(null)
+  const [showOutput, setShowOutput] = useState<boolean>(false)
+  const [data, setData] = useState({} as IData)
 
-  /* useEffect(() => {
+  useEffect(() => {
     console.log(
       `Nama: ${nama}
 Jumlah: ${jumlah}
@@ -58,10 +56,19 @@ Bagasi: ${bagasi}
 Asuransi:`,
       asuransi
     )
-    }, [nama, jumlah, kelas, tujuan, bagasi, asuransi]) */
+  }, [nama, jumlah, kelas, tujuan, bagasi, asuransi])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setData({
+      nama,
+      jumlah,
+      kelas,
+      tujuan,
+      bagasi,
+      asuransi,
+    })
+    setShowOutput(true)
   }
 
   return (
@@ -72,26 +79,21 @@ Asuransi:`,
       <Layout>
         <Data.Provider
           value={{
-            nama,
             setNama,
-            jumlah,
             setJumlah,
-            kelas,
             setKelas,
-            tujuan,
             setTujuan,
-            bagasi,
             setBagasi,
-            asuransi,
             setAsuransi,
+            showOutput,
+            data,
             handleSubmit,
           }}
         >
-          <div className='grid md:grid-cols-2 gap-2 justify-items-center md:w-screen'>
+          <div className='grid md:grid-cols-2 gap-4 md:gap-10'>
+            <Form />
             {/* Output */}
-            <div>
-              <Header title='Data Pemesanan Tiket' />
-            </div>
+            <Output />
             {/* ------ */}
           </div>
         </Data.Provider>
