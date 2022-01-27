@@ -18,6 +18,7 @@ const Form = () => {
     setBagasi,
     asuransi,
     setAsuransi,
+    setShowOutput,
     handleSubmit,
   } = useContext(Data)
   return (
@@ -80,7 +81,11 @@ const Form = () => {
           <Button color='sky-400' type='submit'>
             Simpan
           </Button>
-          <Button color='red-400' type='reset'>
+          <Button
+            color='red-400'
+            type='reset'
+            onClick={() => setShowOutput(false)}
+          >
             Batal
           </Button>
         </div>

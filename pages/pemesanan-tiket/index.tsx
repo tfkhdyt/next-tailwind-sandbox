@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import { FormEvent, useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-import Header from '../../components/pemesanan-tiket/Header'
 import Layout from '../../components/pemesanan-tiket/Layout'
 import { createContext } from 'react'
 import Form from '../../components/pemesanan-tiket/Form'
 import Output from '../../components/pemesanan-tiket/Output'
 
-interface IAsuransi {
+export interface IAsuransi {
   jiwa?: boolean
   kecelakaan?: boolean
   keterlambatan?: boolean
@@ -15,11 +14,13 @@ interface IAsuransi {
 
 interface IContext {
   setNama: Dispatch<SetStateAction<string | null>>
-  setJumlah: Dispatch<SetStateAction<number | null>>
+  setJumlah: Dispatch<SetStateAction<number>>
   setKelas: Dispatch<SetStateAction<string | null>>
   setTujuan: Dispatch<SetStateAction<string | null>>
   setBagasi: Dispatch<SetStateAction<string | null>>
   setAsuransi: Dispatch<SetStateAction<IAsuransi | null>>
+  setShowOutput: Dispatch<SetStateAction<boolean>>
+  asuransi: IAsuransi | null
   showOutput: boolean
   data: IData
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void
@@ -38,11 +39,15 @@ export const Data = createContext({} as IContext)
 
 const PemesananTiket = () => {
   const [nama, setNama] = useState<string | null>(null)
-  const [jumlah, setJumlah] = useState<number | null>(null)
+  const [jumlah, setJumlah] = useState<number>(0)
   const [kelas, setKelas] = useState<string | null>(null)
   const [tujuan, setTujuan] = useState<string | null>(null)
   const [bagasi, setBagasi] = useState<string | null>(null)
-  const [asuransi, setAsuransi] = useState<IAsuransi | null>(null)
+  const [asuransi, setAsuransi] = useState<IAsuransi | null>({
+    jiwa: false,
+    kecelakaan: false,
+    keterlambatan: false,
+  })
   const [showOutput, setShowOutput] = useState<boolean>(false)
   const [data, setData] = useState({} as IData)
 
@@ -86,6 +91,8 @@ Asuransi:`,
             setBagasi,
             setAsuransi,
             showOutput,
+            setShowOutput,
+            asuransi,
             data,
             handleSubmit,
           }}
@@ -93,7 +100,7 @@ Asuransi:`,
           <div className='grid md:grid-cols-2 gap-4 md:gap-10'>
             <Form />
             {/* Output */}
-            <Output />
+            {showOutput && <Output />}
             {/* ------ */}
           </div>
         </Data.Provider>

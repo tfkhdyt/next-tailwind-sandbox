@@ -9,13 +9,18 @@ interface IInputForm {
 
 export enum InputType {
   text = 'text',
-  number = 'number'
+  number = 'number',
 }
 
-const InputForm = ({ id, label, type = InputType.text, ...rest }: IInputForm) => {
+const InputForm = ({
+  id,
+  label,
+  type = InputType.text,
+  ...rest
+}: IInputForm) => {
   return (
     <div className='items-center grid grid-cols-2'>
-      <label htmlFor={id} className='text-slate-800'>
+      <label htmlFor={id} className='text-slate-800 font-semibold'>
         {label}
       </label>
       <input

@@ -3,9 +3,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "prettier -w ./{pages,components}/**/*.{ts,tsx,js,jsx} && eslint --fix ./{pages,components}/**/*.{ts,tsx,js,jsx}"
   },
   "dependencies": {
+    "framer-motion": "^6.2.3",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
