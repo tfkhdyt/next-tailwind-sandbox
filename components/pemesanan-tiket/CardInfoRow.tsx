@@ -5,10 +5,10 @@ interface ICardInfoRow {
 
 const CardInfoRow = ({ label, value }: ICardInfoRow) => {
   return (
-    <div className='flex justify-between items-start mb-2'>
+    <div className='mb-2 flex items-start justify-between'>
       <p className='font-semibold'>{label}</p>
-      <div className='w-3/6 flex flex-nowrap'>
-        <span className='font-semibold mr-2'>:</span>
+      <div className='flex w-3/6 flex-nowrap'>
+        <span className='mr-2 font-semibold'>:</span>
         <p>{value}</p>
       </div>
     </div>

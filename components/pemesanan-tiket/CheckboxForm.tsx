@@ -14,8 +14,8 @@ export enum CheckboxType {
 
 const CheckboxForm = ({ id, label, option, ...rest }: ICheckboxForm) => {
   return (
-    <div className='items-start grid grid-cols-2'>
-      <label htmlFor={id} className='text-slate-800 font-semibold'>
+    <div className='grid grid-cols-2 items-start'>
+      <label htmlFor={id} className='font-semibold text-slate-800'>
         {label}
       </label>
       <div className='block space-y-2'>

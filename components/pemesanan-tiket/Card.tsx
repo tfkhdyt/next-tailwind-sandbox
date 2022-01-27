@@ -10,7 +10,7 @@ const Card = ({ children }: { children: ReactNode }) => {
       transition={{
         duration: 0.5,
       }}
-      className='bg-gradient-to-br from-slate-50 to-slate-200 rounded-md p-6 shadow-md w-full space-y-4 h-fit'
+      className='h-fit w-full space-y-4 rounded-md bg-gradient-to-br from-slate-50 to-slate-200 p-6 shadow-md'
     >
       {children}
     </motion.div>

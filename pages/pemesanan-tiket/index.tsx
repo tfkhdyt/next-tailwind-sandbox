@@ -97,7 +97,7 @@ Asuransi:`,
             handleSubmit,
           }}
         >
-          <div className='grid md:grid-cols-2 gap-4 md:gap-10'>
+          <div className='grid gap-4 md:grid-cols-2 md:gap-10'>
             <Form />
             {/* Output */}
             {showOutput && <Output />}

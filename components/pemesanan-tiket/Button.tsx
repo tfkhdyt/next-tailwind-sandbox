@@ -15,7 +15,7 @@ const Button = ({ color, children, type, ...rest }: IButton) => {
     <button
       {...rest}
       type={type}
-      className={`px-3 py-2 bg-${color} rounded text-white font-semibold hover:bg-${shadeColor} shadow-md shadow-${shadeColor}/50 transition duration-300`}
+      className={`px-3 py-2 bg-${color} rounded font-semibold text-white hover:bg-${shadeColor} shadow-md shadow-${shadeColor}/50 transition duration-300`}
     >
       {children}
     </button>

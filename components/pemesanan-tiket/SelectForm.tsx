@@ -14,15 +14,15 @@ export enum SelectType {
 
 const SelectForm = ({ id, label, option, ...rest }: ISelectForm) => {
   return (
-    <div className='items-center grid grid-cols-2'>
-      <label htmlFor={id} className='text-slate-800 font-semibold'>
+    <div className='grid grid-cols-2 items-center'>
+      <label htmlFor={id} className='font-semibold text-slate-800'>
         {label}
       </label>
       <select
         id={id}
         name={id}
         {...rest}
-        className='rounded-sm focus:ring-2 focus:ring-blue-600 outline-none px-2 py-1 h-8 transition duration-300 bg-white appearance-none'
+        className='h-8 appearance-none rounded-sm bg-white px-2 py-1 outline-none transition duration-300 focus:ring-2 focus:ring-blue-600'
         required
         defaultValue=''
       >
