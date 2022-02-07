@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "prettier -w ./{pages,components}/**/*.{ts,tsx,js,jsx} && eslint --fix ./{pages,components}/**/*.{ts,tsx,js,jsx}"
+    "lint": "prettier -cw ./{pages,components}/**/*.{ts,tsx,js,jsx} && eslint --fix ./{pages,components}/**/*.{ts,tsx,js,jsx}"
   },
   "dependencies": {
     "framer-motion": "^6.2.3",
