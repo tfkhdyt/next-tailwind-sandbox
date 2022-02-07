@@ -22,13 +22,13 @@ const GridLayout = () => {
   ]
   const [pattern] = useState<number[]>(createPattern(nama.length))
   return (
-    <div className='container mx-auto w-screen md:py-6 md:px-24 p-4'>
+    <div className='container mx-auto w-screen p-4 md:py-6 md:px-24'>
       <div className='grid grid-cols-2 gap-4'>
         {nama.map((value, index) => (
           <div
             className={`grid place-items-center border-2 ${
               pattern.includes(index + 1) ? 'col-span-2 h-36' : 'h-52'
-            } font-bold text-xl`}
+            } text-xl font-bold`}
             key={index}
           >
             {value}
