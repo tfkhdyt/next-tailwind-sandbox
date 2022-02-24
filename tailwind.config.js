@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
   safelist: [
     {
       pattern: /(bg|shadow|from|to)-*-*/,
